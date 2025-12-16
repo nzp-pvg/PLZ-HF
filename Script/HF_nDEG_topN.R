@@ -10,8 +10,6 @@ library(glmnet)
 library(limma)
 library(doParallel)
 
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/Model_Tuning")
-
 # 加载数据与函数
 load("Discovery_start_data.RData")
 source("one_vs_each_HF.R")
