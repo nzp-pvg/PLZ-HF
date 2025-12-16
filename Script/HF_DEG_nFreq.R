@@ -9,7 +9,6 @@ library(caret)
 library(randomForest)
 library(doParallel)
 
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/nFreq")
 
 # Load data
 load("Discovery_start_data.RData")  # expr_mat, classes_df
