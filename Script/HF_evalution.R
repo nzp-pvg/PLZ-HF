@@ -10,8 +10,7 @@ library(purrr)
 library(pheatmap)
 library(readxl)
 
-# 选定最适统一nFreq
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/nFreq/nFreq_results")
+
 
 deg_counts <- sapply(1:42, function(i) {
   deg <- readRDS(paste0("nFreq_", i, ".rds"))
@@ -32,40 +31,11 @@ ICM_genes
 DCM_genes
 CTL_genes
 
-
 deg_final$ICM$nGenes
-
-
-
-
-
-
-
 
 
 # load HF subtyping classification result
 res <- readRDS("HF_OnevsEach_CV_top560_degTable_results.rds")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 标准曲线分析
 # === 载入包 ===
