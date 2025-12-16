@@ -12,8 +12,6 @@ library(caret)
 library(randomForest)
 library(glmnet)
 
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/top560/validation/")
-
 # Load discovery matrix (count_annotated, sample_info_discovery)
 
 # Step 1: 加载完整数据
