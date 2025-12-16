@@ -12,8 +12,6 @@ library(tidyr)
 library(limma)
 library(sva)
 
-##set work path
-setwd("~/Science/CVD/CVD_MS_1/data/GEO")
 
 ## download data
 gset = getGEO('', destdir=".",getGPL = F)
