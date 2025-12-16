@@ -11,9 +11,6 @@ library(limma)
 library(caret)
 
 
-
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/top560/validation/")
-
 # 准备表达矩阵与样本信息
 # 必要库
 library(readxl)
