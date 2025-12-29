@@ -344,10 +344,6 @@ library(reshape2)
 library(tidyr)
 library(edgeR)
 
-
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/top560/validation/")
-
-
 # ===============================
 # 0. 加载必要包
 # ===============================
@@ -524,7 +520,6 @@ library(tidyr)
 library(edgeR)
 library(limma)
 
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/top560/validation/")
 
 # ===============================
 # 1. 加载数据
