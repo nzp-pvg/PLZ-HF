@@ -931,10 +931,6 @@ ggplot(roc_df_svm, aes(x = Spec, y = Sens, color = Class)) +
   
 ## hub 基因验证
 # === HF_subtyping_v3.R ===
-rm(list=ls())
-gc()
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/top560/validation/")
-
 ## ================== 基础准备 ==================
 library(readxl)
 library(biomaRt)
