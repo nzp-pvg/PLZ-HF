@@ -9,7 +9,7 @@ load("Discovery_start_data.RData")
 
 set.seed(2025)
 k <- 10
-repeat_n <- 30  # ⚠️ 已改为30次交叉重复
+repeat_n <- 30  # 
 subclasses <- c("ICM", "DCM", "CTL")
 
 cv_ctrl <- trainControl(
