@@ -72,7 +72,7 @@ for (n in nDEG_range) {
 stopCluster(cl)
 
 # AUC analysis
-setwd("~/Science/CVD/CVD_MS_1/data/RNA-Seq/subtype/Model_Tuning/res")
+
 nDEG_range <- c(100, 200, 300, 400, 500, 600, 700, 1000, 1200, 1500, 2000)
 subclasses <- c("ICM", "DCM", "CTL")
 #  提取 AUC 的函数
