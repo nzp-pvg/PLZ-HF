@@ -46,7 +46,7 @@ Plasticizer-only and integration scripts are under:
 ## 🧾 Key parameters (quick reference)
 
 > Scope: method parameters and evaluation rules for reproducibility.
-> ⚠️ Note: this document lists settings and definitions only (no primary-result claims).
+> ⚠️ **Note: settings and definitions only (no primary-result claims).**
 
 ---
 
