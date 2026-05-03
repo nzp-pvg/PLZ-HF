@@ -1,0 +1,10 @@
+file	purpose
+Discovery_start_data_demo.RData	discovery input subset
+Discovery_start_data_demo_canonical_names.RData	discovery input subset with canonical object names
+HF_processed_counts_demo.RData	processed counts subset
+HF_processed_counts_demo_canonical_names.RData	processed counts subset with canonical object names
+GSE_processed_counts_demo.RData	merged processed-counts subset
+GSE_processed_counts_demo_canonical_names.RData	merged processed-counts subset with canonical object names
+GSE46224_matrix_demo.rds	per-cohort matrix example
+GSE141910_matrix_demo.rds	external validation matrix example
+GSE55296_matrix_demo.rds	external validation matrix example
