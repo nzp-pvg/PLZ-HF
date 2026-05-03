@@ -1,4 +1,4 @@
-# PLZ-HF: Reproducible Analysis Platform (Plasticizers × Heart Failure)
+# 🧬 PLZ-HF: Reproducible Analysis Platform (Plasticizers × Heart Failure)
 
 This repository provides a reproducible analysis platform for the PLZ–HF project: integrating plasticizer target profiles with subtype-resolved heart failure (HF) transcriptomic signatures (DCM, ICM, CTL) to derive mixture-relevant molecular axes, enrichment programs, and network-level hypotheses.
 
@@ -6,46 +6,46 @@ The codebase is organized for traceability, reuse, and figure-level reproducibil
 
 ---
 
-## What this repo contains
+## 🧲 What this repo contains
 
-### HF transcriptomic module (RNA-Seq)
-- Multi-cohort RNA-Seq preprocessing and harmonization
-- Discovery-stage one-vs-rest Random Forest (RF) modeling for HF subtype classification
-- Feature stabilization via recurrence (nFreq), with TopNumber and nFreq sensitivity scans
-- Internal evaluation (ROC/PR, calibration, metrics) using out-of-fold predictions
-- External validation (GSE141910, GSE55296) and benchmarking (RF/XGB/SVM)
-- Cohort-sensitivity checks (LOCO)
+### 🫀 HF transcriptomic module (RNA-Seq)
+- Multi-cohort RNA-Seq preprocessing and harmonization  
+- Discovery-stage one-vs-rest Random Forest (RF) modeling for HF subtype classification  
+- Feature stabilization via recurrence (nFreq), with TopNumber and nFreq sensitivity scans  
+- Internal evaluation (ROC/PR, calibration, metrics) using out-of-fold predictions  
+- External validation (GSE141910, GSE55296) and benchmarking (RF/XGB/SVM)  
+- Cohort-sensitivity checks (LOCO)  
 - Robustness checks (permutation negative control; noise-injection sensitivity)
 
-### Plasticizer module (PLZ)
-- Toxicity/regulatory annotation summaries and exposure-tiering logic
+### 🧪 Plasticizer module (PLZ)
+- Toxicity/regulatory annotation summaries and exposure-tiering logic  
 - Target-profile similarity clustering and cluster-number sensitivity
 
-### Integration module (PLZ × HF)
-- Cluster-level target unions intersected with HF subtype DEG sets
-- Enrichment analysis (GO/KEGG/Reactome, MSigDB ORA)
-- Network construction and hub prioritization (STRING/Cytoscape exports)
+### 🧩 Integration module (PLZ × HF)
+- Cluster-level target unions intersected with HF subtype DEG sets  
+- Enrichment analysis (GO/KEGG/Reactome, MSigDB ORA)  
+- Network construction and hub prioritization (STRING/Cytoscape exports)  
 - Sankey-ready tables for axis-level summaries
 
 ---
 
-## Repository entry points
+## 🚀 Repository entry points
 
 If you only run one pathway, start here:
 
 `organized_by_task/Script/`
 
 Scripts are grouped into three modules:
-- `HF/` — HF discovery, tuning, robustness, validation, and evaluation
-- `PLZ/` — plasticizer-only analyses (annotation, clustering, sensitivity)
-- `PLZ_HF_integration/` — intersection, enrichment, network, and Sankey outputs
+- `HF/` — HF discovery, tuning, robustness, validation, and evaluation  
+- `PLZ/` — plasticizer-only analyses (annotation, clustering, sensitivity)  
+- `PLZ_HF_integration/` — intersection, enrichment, network, and Sankey outputs  
 
-A compact script inventory is available at:
+A compact script inventory is available at:  
 `organized_by_task/CODE_DIRECTORY.md`
 
 ---
 
-## Directory overview
+## 🗂️ Directory overview
 
 ```text
 code
