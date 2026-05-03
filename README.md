@@ -1,6 +1,3 @@
-# PLZ-HF
-Plasticizer-Responsive Molecular Axes in Heart Failure
-
 # 🧬 PLZ–HF Reproducibility Hub
 
 This repository provides a reproducible analysis workflow for integrating plasticizer target profiles with subtype-resolved HF (DCM, ICM, CTL) RNA-Seq signatures. It is organized for traceability, parameter transparency, and rerunnable figure-level outputs.
