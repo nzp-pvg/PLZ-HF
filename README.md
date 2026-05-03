@@ -48,10 +48,7 @@ Plasticizer-only and integration scripts are under:
 
 ## 🧾 Key parameters (quick reference)
 
-A compact parameter checklist aligned with the Methods is provided in:
-# 🧾 PLZ–HF Key Parameters (Quick Reference)
-
-> Scope: method parameters and evaluation rules for reproducibility and review.
+> Scope: method parameters and evaluation rules for reproducibility.
 > Note: this document lists settings and definitions only (no primary-result claims).
 
 ---
