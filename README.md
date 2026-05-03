@@ -49,8 +49,132 @@ Plasticizer-only and integration scripts are under:
 ## 🧾 Key parameters (quick reference)
 
 A compact parameter checklist aligned with the Methods is provided in:
+# 🧾 PLZ–HF Key Parameters (Quick Reference)
 
-`docs/PLZ_HF_key_parameters.md`
+> Scope: method parameters and evaluation rules for reproducibility and review.
+> Note: this document lists settings and definitions only (no primary-result claims).
+
+---
+
+## 🧬 Data and cohorts
+
+- 📚 **Discovery cohorts (RNA-Seq, LV tissue)**: GSE46224, GSE116250, GSE120852, GSE135055, GSE48166, GSE126569  
+- 🧪 **Independent validation cohorts**: GSE141910 (DCM vs CTL), GSE55296 (DCM/ICM/CTL)
+- 📥 **Input type**: raw RNA-Seq **count** matrices
+
+---
+
+## 🧹 Preprocessing (RNA-Seq)
+
+- 🧯 **Batch correction**: `sva::ComBat_seq()`  
+  - batch variable: cohort-of-origin  
+  - input scale: counts
+- ⚖️ **Normalization (within-training)**: `edgeR::DGEList()` + `calcNormFactors(method="TMM")`
+- 🔁 **Transformation / modeling**: `limma::voom()` (logCPM + precision weights)
+
+---
+
+## 🧬 DEG ranking (training-only)
+
+- ✅ **Training-only rule**: DEG ranking and feature selection are performed strictly **within training splits only** (no information from held-out folds used for DEG ranking)
+- 🧪 **Pipeline**: `voom → lmFit → contrasts.fit → eBayes(trend=TRUE)`
+- 📊 **Ranking statistic**: limma **moderated t-statistic** (one-vs-rest contrast)
+
+---
+
+## 🤖 Classification task
+
+- 🎯 **Scheme**: one-vs-rest Random Forest (RF)
+  - DCM vs (ICM + CTL)
+  - ICM vs (DCM + CTL)
+  - CTL vs (DCM + ICM)
+
+---
+
+## 🔄 Nested resampling design
+
+- 🧱 **Outer evaluation**: stratified 10-fold CV × 100 outer repeats  
+  - total fold-level selections: **100 × 10 = 1000**
+  - evaluation uses **out-of-fold** predictions from the outer CV
+- 🧰 **Inner fitting/tuning (caret)**: `trainControl(method="repeatedcv", number=10, repeats=3, classProbs=TRUE, savePredictions="final")`
+- 🧭 **caret optimization metric**: Kappa  
+  - reporting focuses on AUROC/AUPRC and complementary metrics
+
+---
+
+## 🧬 Feature selection (TopNumber)
+
+- 🧷 **TopNumber**: 560 DEGs per one-vs-rest task
+- ↕️ **Symmetric rule**: select 280 most positive + 280 most negative DEGs  
+  - corresponds to opposite directions in the one-vs-rest contrast
+
+---
+
+## 🧲 Stability filter (nFreq)
+
+- 🔁 **Definition**: fold-level recurrence across **1000** fold-level TopNumber lists  
+  - nFreq = number of fold-level TopNumber lists (out of 1000) in which a gene appears  
+- 🎚️ **Subtype-specific thresholds**:
+  - CTL = 2
+  - DCM = 8
+  - ICM = 17
+- 🧠 **Selection rationale**: thresholds guided by sensitivity curves (trade-off between performance stability and signature compactness)
+
+---
+
+## 🎛️ RF hyperparameters
+
+- ✅ **Tuned parameter**: `mtry ≈ TopNumber/3`  
+- 🧱 **Inherited randomForest defaults** (unless otherwise stated):
+  - `ntree = 500`
+  - `nodesize = 1` (classification)
+  - `replace = TRUE`
+
+---
+
+## ⚖️ Class imbalance handling
+
+- ✅ **Primary RF pipeline**: stratified resampling (no explicit `classwt`)
+- 🧪 **Sensitivity check (weighted RF)**: `randomForest::classwt` (inverse prevalence; neg/pos)
+
+---
+
+## 📈 Evaluation rules and metrics
+
+- 🏆 **Primary metric**: AUROC  
+- 📌 **Complementary metrics**: AUPRC, macro-F1, balanced accuracy, accuracy
+- 🧾 **Prediction source**: out-of-fold predictions only (outer CV)
+- 🧠 **Multiclass decision rule**: argmax of one-vs-rest predicted probabilities
+- 🎯 **Calibration**:
+  - 10 quantile-based bins of predicted probabilities
+  - ECE and Brier score computed from binned summaries
+- 📉 **AUROC 95% CI**: `pROC::ci.auc()` (DeLong)
+
+---
+
+## 🌍 External evaluation (primary RF transfer)
+
+- 🚚 **Transfer rule (primary RF external validation)**:
+  - apply discovery-derived DEGs and fold-specific trained models directly to external cohorts
+  - no feature reselection; no retraining during the transfer step
+- 🏷️ **Label constraint rule**: external evaluation follows label-defined tasks (no subtype imputation or label redefinition)
+
+---
+
+## 🧪 Robustness checks
+
+- 🔀 **Permutation negative control**: 500 label permutations under identical pipeline
+- 🌫️ **Noise injection sensitivity**: Gaussian noise 0%, 5%, 10%; 12 repeats per condition
+
+---
+
+## ♻️ Reproducibility
+
+- 🎲 **Random seed**: `set.seed(2025)` (primary discovery-stage scripts)
+- 🧰 **Core software**: R, edgeR, limma, sva, caret, randomForest, pROC (see manuscript Table 2 for versions)
+
+---
+
 
 This includes: cohort definitions, nested CV design, TopNumber/nFreq settings, evaluation rules (OOF predictions, calibration bins), CI method, and robustness checks.
 
